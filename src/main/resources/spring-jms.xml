@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.9.0.xsd">
+
+	<bean class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="explicitQosEnabled"  value="true"/>
+		<property name="timeToLive" value="30000"></property>
+	</bean>
+
+	<amq:connectionFactory brokerURL="${jms.url}"
+		id="connectionFactory">
+		<amq:redeliveryPolicyMap>
+			<amq:redeliveryPolicyMap>
+				<amq:defaultEntry>
+					<!-- 5次，每次30秒 -->
+
+					<amq:redeliveryPolicy maximumRedeliveries="5"
+						initialRedeliveryDelay="30000" />
+				</amq:defaultEntry>
+				<amq:redeliveryPolicyEntries>
+					<!-- 3次 1分钟 2分钟 4分钟 -->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+					<amq:redeliveryPolicy queue="queue.hermes.guozhengtong"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+					<!-- 专线个人户籍信息 -->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.police"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+					<!-- 专线学历信息 -->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.education"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+					<!-- 专线学籍信息 -->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.education.inSchool"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+					<!-- 专线广东社保信息 -->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.gdsi"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+					<!-- 百融公司查询 -->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.bairong"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+					<!-- 聚信立报告查询-->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.juxinliReport1"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+				  <!-- 聚信立信息验证-->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.juxinliVerify"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+
+				   <!-- 银联智惠下澡 -->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.yinlianzh"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+				    <!-- 银联智惠查询 -->
+
+					<amq:redeliveryPolicy queue="queue.hermes.third.yinlianzhSearch"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+					<!-- 前海 -->	
+					<amq:redeliveryPolicy queue="queue.hermes.third.qianhai"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />	
+					<!-- 工商爬取 -->	
+					<amq:redeliveryPolicy queue="queue.hermes.third.crawlCompany"
+						maximumRedeliveries="3" initialRedeliveryDelay="60000"
+						backOffMultiplier="2" useExponentialBackOff="true" />
+				</amq:redeliveryPolicyEntries>
+			</amq:redeliveryPolicyMap>
+		</amq:redeliveryPolicyMap>
+	</amq:connectionFactory>
+	
+	<amq:queue id="thirdJMSQueue" physicalName="queue.hermes.third" />
+	<amq:queue id="guoZhengTongJMSQueue" physicalName="queue.hermes.guozhengtong" />
+	<amq:queue id="policeJMSQueue" physicalName="queue.hermes.third.police" />
+	<amq:queue id="educationJMSQueue" physicalName="queue.hermes.third.education" />
+	<amq:queue id="inSchoolEducationJMSQueue" physicalName="queue.hermes.third.education.inSchool" />
+	<amq:queue id="gdsiJMSQueue" physicalName="queue.hermes.third.gdsi" />
+	<amq:queue id="bairongJMSQueue" physicalName="queue.hermes.third.bairong" />
+    <amq:queue id="juxinliReport1Queue" physicalName="queue.hermes.third.juxinliReport1" />
+    <amq:queue id="juxinliVerifyQueue" physicalName="queue.hermes.third.juxinliVerify" />
+
+	<amq:queue id="yinlianzhJMSQueue" physicalName="queue.hermes.third.yinlianzh" />
+	<amq:queue id="yinlianzhSearchJMSQueue" physicalName="queue.hermes.third.yinlianzhSearch" />
+    <amq:queue id="qianhaiJMSQueue" physicalName="queue.hermes.third.qianhai" />
+    <amq:queue id="crawlCompanyJMSQueue" physicalName="queue.hermes.third.crawlCompany" />
+    
+	<amq:topic id="hermesPublishQueue" physicalName="VirtualTopic.hermes.publish" />
+	
+	<jms:listener-container destination-type="queue" 
+		concurrency="8-32" acknowledge="transacted">
+		<jms:listener destination="queue.hermes.third" ref="thirdQueueListener" />
+		<jms:listener destination="queue.hermes.guozhengtong"
+			ref="thirdGZTQueueListener" />
+		<jms:listener destination="queue.hermes.third.police"
+			ref="policeJMSQueueListener" />
+		<jms:listener destination="queue.hermes.third.education"
+			ref="educationJMSQueueListener" />
+		<jms:listener destination="queue.hermes.third.education.inSchool"
+			ref="inSchoolEducationJMSQueueListener" />
+		<jms:listener destination="queue.hermes.third.gdsi"
+			ref="gdsiJMSQueueListener" />
+		<jms:listener destination="queue.hermes.third.bairong"
+			ref="baiRongJMSQueueListener" />
+
+			
+		<jms:listener destination="queue.hermes.third.juxinliReport1"
+			ref="juxinliReport1JMSQueueListener" />
+			
+		<jms:listener destination="queue.hermes.third.juxinliVerify"
+			ref="juxinliVerifyJMSQueueListener" />
+
+		<jms:listener destination="queue.hermes.third.yinlianzh"
+			ref="merchantBillJMSQueueListener" />
+		<jms:listener destination="queue.hermes.third.yinlianzhSearch"
+			ref="merchantBillSearchJMSQueueListener" />
+			
+	    <jms:listener destination="queue.hermes.third.qianhai"
+			ref="qianhaiQueueJMSQueueListener" />
+		
+		<!-- 工商爬取  -->	
+		<jms:listener destination="queue.hermes.third.crawlCompany"
+			ref="crawlCompanyJMSQueueListener" />
+		<!-- 工商爬取过来的  -->	
+		<jms:listener destination="queue.tesla.companyinfo.crawl.hermes"
+			ref="companyFromCrawlJMSQueueListener" />	
+	</jms:listener-container>
+</beans>

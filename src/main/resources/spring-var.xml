@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	 >
+	<context:property-placeholder location="classpath:constants.properties"/>
+	<bean  class="com.ucredit.hermes.common.Variables">
+		<property name="pengYuanURL" value="${pengyuan.url}" />
+		<property name="pengYuanUsername" value="${pengyuan.username}" />
+		<property name="pengYuanPassword" value="${pengyuan.password}" />
+		<property name="guoZhengTongUsername" value="${guozhengtong.username}" />
+		<property name="guoZhengTongPassword" value="${guozhengtong.password}" />
+		<property name="baiRongUserName" value="${bairong.username}" />
+		<property name="baiRongPassword" value="${bairong.password}" />
+		<property name="anShengURL" value="${ansheng.url}" />
+		<property name="juxinliUrl" value="${juxinli.url}" />
+		<property name="juxinliClientSecret" value="${juxinli.client_secret}" />
+		<property name="juxinliAccessToken" value="${juxinli.access_token}" />
+		<property name="juxinliVerifyUrl" value="${juxinli.verifyUrl}" />
+
+		<property name="yinlianzhihuiBillUrl" value="${yinlianzhihuiBill.url}" />
+		<property name="yinlianzhihuiBillsUrl" value="${yinlianzhihuiBills.url}" />
+		<property name="yinlianzhAccount" value="${yinlianzh.account}" />
+		<property name="yinlianzhPrivateKey" value="${yinlianzh.privateKey}" />
+		<property name="yinlianzhihuiDownloadUrl" value="${yinlianzhihuiDownload.url}" />
+		
+
+		<property name="miguanClientSecret" value="${miguan.client_secret}" />
+		<property name="miguanAccessToken" value="${miguan.access_token}" />
+        <property name="miguanUrl" value="${miguan.url}" />
+
+		<property name="tongdunUrl" value="${tongdun.url}" />
+		<property name="tongdunPartnerCode" value="${tongdun.partner_code}" />
+		<property name="tongdunAndroidSecretKey" value="${tongdun.android.secret_key}" />
+		<property name="tongdunIosSecretKey" value="${tongdun.ios.secret_key}" />
+        <property name="tongdunSecretKey" value="${tongdun.secret_key}" />
+
+        <!-- 前海征信 -->
+        <property name="qianhaiUrl" value="${qianhai.url}" />
+        <property name="qianhaiOrgCode" value="${qianhai.orgCode}" />
+        <property name="qianhaiChnlId" value="${qianhai.chnlId}" />
+        <property name="qianhaiAuthCode" value="${qianhai.authCode}" />
+        <property name="qianhaiUserName" value="${qianhai.userName}" />
+        <property name="qianhaiUserPassword" value="${qianhai.userPassword}" />
+        <property name="qianhaiPathCer" value="${qianhai.path.cer}" />
+        <property name="qianhaiPathJks" value="${qianhai.path.jks}" />
+        <property name="qianhaiAuthDate" value="${qianhai.authDate}" />
+        <property name="qianhaiCheckCode" value="${qianhai.checkCode}" />
+        <property name="qianhaiJksAlias" value="${qianhai.jks.alias}" />
+        <property name="qianhaiJksPassword" value="${qianhai.jks.password}" />
+        
+        <!-- 爬取 -->
+         <property name="crawlCompanyUrl" value="${crawl.company.url}" />
+        <property name="crawlXuexinUrl" value="${crawl.xuexin.url}" />
+	</bean>
+</beans>

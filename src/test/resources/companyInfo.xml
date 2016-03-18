@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="GBK" ?>
+<cisReports  batNo="2014072113003933" unitName="友众信业金融信息服务（上海）有限公司" subOrgan="风险管理部" queryUserID="yzxywsquery" queryCount="1" receiveTime="20140721 13:51:07">
+	<costCount>
+		<item>
+			<subReportType>22103</subReportType>
+			<count>0</count>
+		</item>
+		<item>
+			<subReportType>21801</subReportType>
+			<count>0</count>
+		</item>
+		<item>
+			<subReportType>22105</subReportType>
+			<count>0</count>
+		</item>
+		<item>
+			<subReportType>90035</subReportType>
+			<count>1</count>
+		</item>
+		<item>
+			<subReportType>22104</subReportType>
+			<count>0</count>
+		</item>
+		<item>
+			<subReportType>95001</subReportType>
+			<count>1</count>
+		</item>
+	</costCount>
+<cisReport reportID="2014072113004089" buildEndTime="2014-07-21 13:51:12" queryReasonID="101" subReportTypes="95001,21801,90035,22103,22104,22105" treatResult="1,0,1,0,0,0" subReportTypesShortCaption="1、企业信用报告 2、企业法院被执行信息 3、企业电话地址报告 4、企业对外投资信息 5、法定代表人在其他机构股权投资信息 6、法定代表人在其他机构担任高管信息 " refID="PY_CC140721135514071" hasSystemError="false" isFrozen="false">
+	<queryConditions>
+		<item>
+			<name>corpName</name>
+			<caption>企业名称</caption>
+			<value>厦门欧麦伽网络科技有限公司</value>
+		</item>
+	</queryConditions>
+<corpBaseNationalInfo subReportType="21301" subReportTypeCost="21301" treatResult="1" errorMessage="">
+	<item>
+		<corpName>厦门欧麦伽网络科技有限公司</corpName>
+		<orgCode>594965589</orgCode>
+		<registerNo>350206200208798</registerNo>
+		<artificialName>陈希长</artificialName>
+		<artificialName2>谢科军</artificialName2>
+		<registDate>20120523</registDate>
+		<handleDate>20140115</handleDate>
+		<cancelDate>20180115</cancelDate>
+		<url></url>
+		<statusID>1</statusID>
+		<flag>在营（开业）</flag>
+		<statusID2>1</statusID2>
+		<statusCaption2>在营（开业）</statusCaption2>
+		<registFund>100.000000</registFund>
+		<fundCurrency>156</fundCurrency>
+		<registFund2>100.0000</registFund2>
+		<fundCurrency2>156</fundCurrency2>
+		<organType>1</organType>
+		<economicType>33</economicType>
+		<staffNumber>3</staffNumber>
+		<tradeCode>I6420</tradeCode>
+		<tradeName1>信息传输、软件和信息技术服务业</tradeName1>
+		<tradeName2>互联网和相关服务</tradeName2>
+		<tradeName3>互联网信息服务</tradeName3>
+		<tradeName4>互联网信息服务</tradeName4>
+		<manageRange>1、网络技术研发及应用（不含互联网上网及信息服务）；2、计算机软件开发及销售；3、网络工程设计、施工；4、网络建设、维护及推广；5、平面设计；6、商务咨询。</manageRange>
+		<openDate>20120523</openDate>
+		<manageBeginDate>20120523</manageBeginDate>
+		<manageEndDate>20620522</manageEndDate>
+		<corpTypeID>1130</corpTypeID>
+		<corpTypeCaption>有限责任公司(自然人投资或控股)</corpTypeCaption>
+		<allowManageProject></allowManageProject>
+		<generalManageProject>1、网络技术研发及应用（不含互联网上网及信息服务）；2、计算机软件开发及销售；3、网络工程设计、施工；4、网络建设、维护及推广；5、平面设计；6、商务咨询。</generalManageProject>
+		<manageRangeFashion>1、网络技术研发及应用（不含互联网上网及信息服务）；2、计算机软件开发及销售；3、网络工程设计、施工；4、网络建设、维护及推广；5、平面设计；6、商务咨询。</manageRangeFashion>
+		<registerDepartment>福建省厦门市思明区工商行政管理局</registerDepartment>
+		<lastCheckYear>2012</lastCheckYear>
+		<lastCheckDate></lastCheckDate>
+		<logoutDate></logoutDate>
+		<revokeDate></revokeDate>
+	</item>
+</corpBaseNationalInfo>
+<registerContactInfos subReportType="21611" subReportTypeCost="21301" treatResult="1" errorMessage="">
+	<item>
+		<areaCode>350203</areaCode>
+		<areaDesc>福建省厦门市思明区</areaDesc>
+		<address>东浦路22号五楼D63</address>
+		<tel>13616046661</tel>
+		<postCode>361007</postCode>
+	</item>
+</registerContactInfos>
+<manageContactInfos subReportType="21612" subReportTypeCost="90035" treatResult="2" errorMessage="">
+</manageContactInfos>
+<nationalCorpShareholderInfo subReportType="22101" subReportTypeCost="95001" treatResult="1" errorMessage="">
+<item>
+	<name>陈希长</name>
+	<contributiveFund>95.000000</contributiveFund>
+	<contributivePercent>95.000000</contributivePercent>
+	<currency></currency>
+	<contributiveDate>20131218</contributiveDate>
+</item>
+<item>
+	<name>张小榕</name>
+	<contributiveFund>5.000000</contributiveFund>
+	<contributivePercent>5.000000</contributivePercent>
+	<currency></currency>
+	<contributiveDate>20131218</contributiveDate>
+</item>
+</nationalCorpShareholderInfo>
+<corpTopManagerInfo subReportType="22102" subReportTypeCost="95001" treatResult="1" errorMessage="">
+	<item>
+		<name>陈希长</name>
+		<positionID>410C</positionID>
+		<positionCaption>执行董事兼总经理</positionCaption>
+	</item>
+	<item>
+		<name>张小榕</name>
+		<positionID>408A</positionID>
+		<positionCaption>监事</positionCaption>
+	</item>
+</corpTopManagerInfo>
+<nationalCorpOtherShareholderInfo subReportType="22103" subReportTypeCost="22103" treatResult="2" errorMessage="">
+</nationalCorpOtherShareholderInfo>
+<frOtherCorpTopManagerInfo subReportType="22105" subReportTypeCost="22105" treatResult="2" errorMessage="">
+</frOtherCorpTopManagerInfo>
+<nationalFrOtherCorpShareholderInfo subReportType="22104" subReportTypeCost="22104" treatResult="2" errorMessage="">
+</nationalFrOtherCorpShareholderInfo>
+<courtInfos subReportType="21801" subReportTypeCost="21801" treatResult="2" errorMessage="">
+</courtInfos>
+</cisReport>
+</cisReports>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+          http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/security  http://www.springframework.org/schema/security/spring-security.xsd">
+	<!--
+	1、create-session stateless状态从security 3.1采用，使用表示SecurityContext类不会保存在Session中，
+	也就意味着每次请求都要验证用户是否有权限，消耗较大，但同样的是的权限控制更加的精细，更加符合restful
+	2、user-expressions 为true时，说明：intercept-url 采用Spring EL表达式验证权限 
+	3、auto-config true security默认的拦截方式，这里采用false，后面配置了point和basic拦截
+	4、realm 对应BaseAuthenticationEntryPoint中的realmname属性，设置在response header的WWW-Authenticate
+	5、entry-ponit-ref 指定对应entryPoint
+	6、http-basic 采用 basic方式过滤验证用户信息，当然也有digest  base64加密方式过滤器的方式
+	7、logout 配置用户退出的相应操作，delete-cookies 退出时删除cookies，invalidate-session true 退出时销毁对话
+	success-handler-ref 成功退出时，相应的操作类   logout-success-url 退出成功时的页面 logout-url 默认url
+	8、customer-fiter 自定义的过滤器 befor/after/position 都表示位置在哪里
+	9、header 是指response的返回  frame-options 设置 是否在一个页面展示有DENY等类型
+	-->
+    <http create-session="stateless" use-expressions="true" auto-config="false" realm="YouCredit Inc. Hermes"
+        entry-point-ref="authenticationEntryPoint">
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+        <logout delete-cookies="JSESSIONID" invalidate-session="true" success-handler-ref="logoutSuccessHandler" />
+		<!-- http basic基本认证 -->
+        <http-basic />
+    </http>
+
+    <beans:bean id="logoutSuccessHandler" class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler" />
+	<!-- 设置SecurityContext strategy，让其子线程也能拿到相应的权限 -->
+    <beans:bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean" p:targetClass="org.springframework.security.core.context.SecurityContextHolder"
+        p:targetMethod="setStrategyName" p:arguments="MODE_INHERITABLETHREADLOCAL" />
+
+    <authentication-manager>
+        <authentication-provider ref="authenticationProvider" />
+    </authentication-manager>
+
+    <beans:bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint">
+        <beans:property name="realmName" value="YouCredit Inc. Hermes" />
+    </beans:bean>
+
+    <beans:bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="passwordEncoder" ref="encoder" />
+        <beans:property name="userDetailsService" ref="userDatailsService" />
+    </beans:bean>
+
+    <beans:bean id="userDatailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <beans:property name="dataSource" ref="hermesDataSource" />
+        <beans:property name="usersByUsernameQuery">
+            <beans:value>
+                SELECT u.username, u.password, u.enabled
+                FROM users as u
+                WHERE u.username=?
+            </beans:value>
+        </beans:property>
+		<!-- <beans:property name="enableAuthorities" value="false" /> -->
+        <beans:property name="authoritiesByUsernameQuery">
+            <beans:value>
+                select u.username,u.enabled
+                from users u
+                where u.username=?
+            </beans:value>
+        </beans:property>
+    </beans:bean>
+
+    <beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <beans:property name="dataSource" ref="hermesDataSource" />
+    </beans:bean>
+
+	<!-- 密码加密方式 -->
+    <beans:bean id="encoder" class="org.jasypt.springsecurity3.authentication.encoding.PasswordEncoder">
+        <beans:property name="passwordEncryptor" ref="encryptor" />
+    </beans:bean>
+    <beans:bean id="encryptor" class="org.jasypt.util.password.rfc2307.RFC2307MD5PasswordEncryptor" />
+</beans:beans>

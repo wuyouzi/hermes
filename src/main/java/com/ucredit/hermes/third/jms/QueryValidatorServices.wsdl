@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://app.service.validator.businesses.gboss.id5.cn" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://app.service.validator.businesses.gboss.id5.cn" xmlns:intf="http://app.service.validator.businesses.gboss.id5.cn" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://app.service.validator.businesses.gboss.id5.cn" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="querySingle">
+    <complexType>
+     <sequence>
+      <element name="userName_" type="xsd:string"/>
+      <element name="password_" type="xsd:string"/>
+      <element name="type_" type="xsd:string"/>
+      <element name="param_" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="querySingleResponse">
+    <complexType>
+     <sequence>
+      <element name="querySingleReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="queryBatch">
+    <complexType>
+     <sequence>
+      <element name="userName_" type="xsd:string"/>
+      <element name="password_" type="xsd:string"/>
+      <element name="type_" type="xsd:string"/>
+      <element name="param_" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="queryBatchResponse">
+    <complexType>
+     <sequence>
+      <element name="queryBatchReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="queryBatchResponse">
+
+      <wsdl:part element="impl:queryBatchResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryBatchRequest">
+
+      <wsdl:part element="impl:queryBatch" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="querySingleResponse">
+
+      <wsdl:part element="impl:querySingleResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="querySingleRequest">
+
+      <wsdl:part element="impl:querySingle" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="QueryValidatorServices">
+
+      <wsdl:operation name="querySingle">
+
+         <wsdl:input message="impl:querySingleRequest" name="querySingleRequest"/>
+
+         <wsdl:output message="impl:querySingleResponse" name="querySingleResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="queryBatch">
+
+         <wsdl:input message="impl:queryBatchRequest" name="queryBatchRequest"/>
+
+         <wsdl:output message="impl:queryBatchResponse" name="queryBatchResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="QueryValidatorServicesSoapBinding" type="impl:QueryValidatorServices">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="querySingle">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="querySingleRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="querySingleResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="queryBatch">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="queryBatchRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="queryBatchResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="QueryValidatorServicesService">
+
+      <wsdl:port binding="impl:QueryValidatorServicesSoapBinding" name="QueryValidatorServices">
+
+         <wsdlsoap:address location="http://gboss.id5.cn/services/QueryValidatorServices"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
+
